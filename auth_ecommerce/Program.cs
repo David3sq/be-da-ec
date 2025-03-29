@@ -17,13 +17,13 @@ global using System.Security.Claims;
 global using System.Text;
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.IdentityModel.Tokens;
-global using Microsoft.AspNetCore.Authentication.JwtBearer;
 global using AutoMapper;
 global using Microsoft.OpenApi.Models;
-global using Swashbuckle.AspNetCore.Filters;
 global using System.Text.Json.Serialization;
 global using System.Linq;
 global using Microsoft.AspNetCore.Http.HttpResults;
+global using Microsoft.AspNetCore.Authentication.JwtBearer;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -75,23 +75,38 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-// Configurazione dell'autenticazione JWT.
+// Configura l'autenticazione JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
-        // Leggi la chiave segreta da "Jwt:Key" (assicurati di configurarla in appsettings.json)
-        var jwtKey = builder.Configuration["Jwt:Key"];
-        if (string.IsNullOrEmpty(jwtKey))
+        // Evento per la gestione del token nella richiesta
+        options.Events = new JwtBearerEvents
         {
-            throw new Exception("JWT Key is not configured. Please set 'Jwt:Key' in your appsettings.json.");
+            OnMessageReceived = context =>
+            {
+                // Estrae il token dall'intestazione Authorization, rimuovendo "Bearer "
+                var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
+                if (!string.IsNullOrEmpty(token))
+                {
+                    context.Token = token;
+                }
+                return Task.CompletedTask;
+            }
+        };
+
+        // Parametri di validazione del token JWT
+        var tokenKey = builder.Configuration.GetSection("AppSettings:Token").Value;
+        if (string.IsNullOrEmpty(tokenKey))
+        {
+            throw new InvalidOperationException("La chiave del token JWT non è configurata. Verifica il file appsettings.json.");
         }
+
         options.TokenValidationParameters = new TokenValidationParameters
         {
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
-            ValidateIssuer = false,
-            ValidateAudience = false,
-            ClockSkew = TimeSpan.Zero
+            ValidateIssuerSigningKey = true, // Valida la chiave di firma del token
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenKey)), // Chiave di firma
+            ValidateIssuer = false, // Non valida l'issuer del token
+            ValidateAudience = false // Non valida l'audience del token
         };
     });
 

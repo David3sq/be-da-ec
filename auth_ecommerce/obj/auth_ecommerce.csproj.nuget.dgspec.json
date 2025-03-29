@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\squar\\Documents\\GitHub\\be-da-ec\\auth_ecommerce\\auth_ecommerce.csproj": {}
+    "C:\\Users\\squar\\Documents\\GitHub\\be-da-ec\\ecommerce\\auth_ecommerce\\auth_ecommerce.csproj": {}
   },
   "projects": {
-    "C:\\Users\\squar\\Documents\\GitHub\\be-da-ec\\auth_ecommerce\\auth_ecommerce.csproj": {
+    "C:\\Users\\squar\\Documents\\GitHub\\be-da-ec\\ecommerce\\auth_ecommerce\\auth_ecommerce.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\squar\\Documents\\GitHub\\be-da-ec\\auth_ecommerce\\auth_ecommerce.csproj",
+        "projectUniqueName": "C:\\Users\\squar\\Documents\\GitHub\\be-da-ec\\ecommerce\\auth_ecommerce\\auth_ecommerce.csproj",
         "projectName": "auth_ecommerce",
-        "projectPath": "C:\\Users\\squar\\Documents\\GitHub\\be-da-ec\\auth_ecommerce\\auth_ecommerce.csproj",
+        "projectPath": "C:\\Users\\squar\\Documents\\GitHub\\be-da-ec\\ecommerce\\auth_ecommerce\\auth_ecommerce.csproj",
         "packagesPath": "C:\\Users\\squar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\squar\\Documents\\GitHub\\be-da-ec\\auth_ecommerce\\obj\\",
+        "outputPath": "C:\\Users\\squar\\Documents\\GitHub\\be-da-ec\\ecommerce\\auth_ecommerce\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\squar\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -50,6 +50,10 @@
               "target": "Package",
               "version": "[12.0.1, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.10, )"
@@ -71,6 +75,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[8.0.0, )"
+            },
+            "Swashbuckle.AspNetCore.Filters": {
+              "target": "Package",
+              "version": "[8.0.2, )"
             }
           },
           "imports": [

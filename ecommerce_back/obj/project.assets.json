@@ -487,11 +487,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\squar\\Documents\\GitHub\\be-da-ec\\ecommerce_back\\ecommerce_back.csproj",
+      "projectUniqueName": "C:\\Users\\squar\\Documents\\GitHub\\be-da-ec\\ecommerce\\ecommerce_back\\ecommerce_back.csproj",
       "projectName": "ecommerce_back",
-      "projectPath": "C:\\Users\\squar\\Documents\\GitHub\\be-da-ec\\ecommerce_back\\ecommerce_back.csproj",
+      "projectPath": "C:\\Users\\squar\\Documents\\GitHub\\be-da-ec\\ecommerce\\ecommerce_back\\ecommerce_back.csproj",
       "packagesPath": "C:\\Users\\squar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\squar\\Documents\\GitHub\\be-da-ec\\ecommerce_back\\obj\\",
+      "outputPath": "C:\\Users\\squar\\Documents\\GitHub\\be-da-ec\\ecommerce\\ecommerce_back\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\squar\\AppData\\Roaming\\NuGet\\NuGet.Config",
