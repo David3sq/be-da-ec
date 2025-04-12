@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ecommerce.auth_ecommerce.Models;
+namespace auth_ecommerce.Models;
 
 public class Ruoli
 {

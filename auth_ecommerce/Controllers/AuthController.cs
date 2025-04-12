@@ -1,4 +1,6 @@
-﻿namespace ecommerce.auth_ecommerce.Controllers
+﻿using auth_ecommerce.Models;
+
+namespace ecommerce.auth_ecommerce.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
