@@ -11,14 +11,6 @@ namespace auth_ecommerce.Models
         public string Username { get; set; } = string.Empty;
         public byte[] PasswordHash { get; set; } = Array.Empty<byte>();
         public byte[] PasswordSalt { get; set; } = Array.Empty<byte>();
-        
-        //  Relazione 1,M  utenti -> ruoli
-        //foreign key
-        public int RuoloId { get; set; }
-        
-        //  proprietà di navigazione verso ruoli
-        [ForeignKey("RuoloId")]
-        public Ruoli Ruolo { get; set; }
     }
 }
 
