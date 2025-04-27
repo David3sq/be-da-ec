@@ -174,3 +174,6 @@ C:\Users\squar\Documents\GitHub\be-da-ec\ecommerce\auth_ecommerce\obj\Debug\net8
 C:\Users\squar\Documents\GitHub\be-da-ec\ecommerce\auth_ecommerce\obj\Debug\net8.0\auth_ecommerce.pdb
 C:\Users\squar\Documents\GitHub\be-da-ec\ecommerce\auth_ecommerce\obj\Debug\net8.0\auth_ecommerce.genruntimeconfig.cache
 C:\Users\squar\Documents\GitHub\be-da-ec\ecommerce\auth_ecommerce\obj\Debug\net8.0\ref\auth_ecommerce.dll
+C:\Users\squar\Documents\GitHub\be-da-ec\ecommerce\auth_ecommerce\bin\Debug\net8.0\auth_ecommerce.staticwebassets.endpoints.json
+C:\Users\squar\Documents\GitHub\be-da-ec\ecommerce\auth_ecommerce\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\squar\Documents\GitHub\be-da-ec\ecommerce\auth_ecommerce\obj\Debug\net8.0\staticwebassets\msbuild.auth_ecommerce.Microsoft.AspNetCore.StaticWebAssetEndpoints.props

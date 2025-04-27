@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "rJtfjhj7uLj05aubohOFL5tjXyCV3JbYN2f73SwQMqA=",
+  "Hash": "HNMJoGfX1TOWXzEGDm5LVKPxHZv6wM3mw7ayYZRMCSU=",
   "Source": "auth_ecommerce",
   "BasePath": "_content/auth_ecommerce",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

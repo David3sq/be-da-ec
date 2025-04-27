@@ -1,6 +1,6 @@
 // GlobalUsings.cs (opzionale, se preferisci metterli in un file separato)
 // Puoi anche inserirli direttamente in Program.cs se preferisci.
-global using ecommerce.auth_ecommerce.Dto;
+
 global using ecommerce.auth_ecommerce.Models;
 global using ecommerce.auth_ecommerce.Data;
 global using ecommerce.auth_ecommerce.Mappers;
