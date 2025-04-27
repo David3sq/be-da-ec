@@ -1,4 +1,6 @@
-﻿namespace ecommerce.auth_ecommerce.Data
+﻿using auth_ecommerce.Models;
+
+namespace ecommerce.auth_ecommerce.Data
 {
     public class EcomContext : DbContext
     {

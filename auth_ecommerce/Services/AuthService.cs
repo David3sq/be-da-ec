@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using auth_ecommerce.Models;
 
 namespace ecommerce.auth_ecommerce.Services
 {
