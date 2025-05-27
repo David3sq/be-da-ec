@@ -1,0 +1,15 @@
+/.config
+/.vs
+
+[Bb]in/
+[Oo]bj/
+
+/auth_ecommerce/bin
+/auth_ecommerce/obj
+/ecommerce_back/bin
+/ecommerce_back/obj
+
+.github
+
+# JetBrains
+.idea/
