@@ -6,8 +6,10 @@
 
 /auth_ecommerce/bin
 /auth_ecommerce/obj
+/auth_ecommerce/auth_ecommerce.csproj.user
 /ecommerce_back/bin
 /ecommerce_back/obj
+/ecommerce_back/ecommerce_back.csproj.user
 
 .github
 
