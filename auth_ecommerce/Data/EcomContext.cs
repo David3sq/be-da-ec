@@ -1,4 +1,4 @@
-﻿using auth_ecommerce.Models;
+﻿using ecommerce.auth_ecommerce.Models;
 
 namespace ecommerce.auth_ecommerce.Data
 {

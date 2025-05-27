@@ -1,13 +1,9 @@
-﻿using System.ComponentModel;
-using auth_ecommerce.Models;
-
-namespace ecommerce.auth_ecommerce.Services
+﻿namespace ecommerce.auth_ecommerce.Services
 {
     public class AuthService
     {
 		private readonly EcomContext _context;
 		private readonly IConfiguration _configuration;
-		private readonly IMapper _mapper;
 		public AuthService(EcomContext context, IConfiguration configuration)
 		{
 			_context = context;
