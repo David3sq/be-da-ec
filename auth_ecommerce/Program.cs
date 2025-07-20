@@ -23,6 +23,7 @@ global using System.Text.Json.Serialization;
 global using System.Linq;
 global using Microsoft.AspNetCore.Http.HttpResults;
 global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using ecommerce.Dto;
 
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,4 +1,4 @@
-﻿namespace ecommerce.auth_ecommerce.Models
+﻿namespace ecommerce.Dto
 {
     public class ServiceResponse<T>
     {
