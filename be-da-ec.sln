@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "auth_ecommerce", "auth_ecommerce\auth_ecommerce.csproj", "{BBB9F8A2-E92F-4C42-84A6-D0CE794110FD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ecommerce_Auth", "auth_ecommerce\ecommerce_Auth.csproj", "{BBB9F8A2-E92F-4C42-84A6-D0CE794110FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ecommerce_back", "ecommerce_back\ecommerce_back.csproj", "{EC1197C9-AA46-4D8C-BE01-5FCB2673DE9E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ecommerce_Back", "ecommerce_back\ecommerce_Back.csproj", "{EC1197C9-AA46-4D8C-BE01-5FCB2673DE9E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dto", "SolutionDto\Dto.csproj", "{18FD6A92-E906-41AA-B29C-C5AB26E67452}"
 EndProject
