@@ -14,6 +14,7 @@ namespace ecommerce.auth_ecommerce.Controllers
         }
 
         [HttpPost("register")]
+        [EndpointDescription("User Register")]
         public async Task<ActionResult<ServiceResponse<int>>> Register(UtentiDto utenti)
         {
             var response = await auth.Register(
@@ -28,6 +29,7 @@ namespace ecommerce.auth_ecommerce.Controllers
 
 
         [HttpPost("login")]
+        [EndpointDescription("User Login")]
         public async Task<ActionResult<ServiceResponse<string>>> Login(UtentiDto utenti)
         {
             var response = await auth.Login(utenti.Username, utenti.Password);
