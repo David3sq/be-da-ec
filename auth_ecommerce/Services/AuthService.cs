@@ -86,8 +86,9 @@
 			List<Claim> claims = new List<Claim>
 			{
 				new Claim(ClaimTypes.NameIdentifier, utenti.Id.ToString()),
-				new Claim(ClaimTypes.Name, utenti.Username)
-			};
+				new Claim(ClaimTypes.Name, utenti.Username),
+				new Claim(ClaimTypes.Role,utenti.Role)
+            };
 
 			SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:Token").Value));
 
