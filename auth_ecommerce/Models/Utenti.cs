@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ecommerce.auth_ecommerce.Models
+namespace common.AuthJWT.Models
 {
     public class Utenti
     {

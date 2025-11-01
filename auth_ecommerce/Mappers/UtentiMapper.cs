@@ -1,6 +1,6 @@
-using ecommerce.auth_ecommerce.Dto;
+using common.AuthJWT.Dto;
 
-namespace ecommerce.auth_ecommerce.Mappers
+namespace common.AuthJWT.Mappers
 {
     public class UtentiProfile : Profile
     {

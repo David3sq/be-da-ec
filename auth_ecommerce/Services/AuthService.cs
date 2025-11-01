@@ -1,4 +1,4 @@
-﻿namespace ecommerce.auth_ecommerce.Services
+﻿namespace common.AuthJWT.Services
 {
     public class AuthService
     {

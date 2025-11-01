@@ -1,4 +1,4 @@
-﻿namespace ecommerce.auth_ecommerce.Dto
+﻿namespace common.AuthJWT.Dto
 {
     public class UtentiDto
     {

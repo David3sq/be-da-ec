@@ -1,4 +1,4 @@
-﻿namespace ecommerce.Dto
+﻿namespace common.Dto
 {
     public class ServiceResponse<T>
     {

@@ -1,6 +1,6 @@
-﻿using ecommerce.auth_ecommerce.Models;
+﻿using common.AuthJWT.Models;
 
-namespace ecommerce.auth_ecommerce.Data
+namespace common.AuthJWT.Data
 {
     public class EcomContext : DbContext
     {

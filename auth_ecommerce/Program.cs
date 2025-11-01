@@ -1,11 +1,8 @@
-// GlobalUsings.cs (opzionale, se preferisci metterli in un file separato)
-// Puoi anche inserirli direttamente in Program.cs se preferisci.
-
-global using ecommerce.auth_ecommerce.Models;
-global using ecommerce.auth_ecommerce.Data;
-global using ecommerce.auth_ecommerce.Mappers;
+global using common.AuthJWT.Models;
+global using common.AuthJWT.Data;
+global using common.AuthJWT.Mappers;
 global using Microsoft.Extensions.Logging;
-global using ecommerce.auth_ecommerce.Services;
+global using common.AuthJWT.Services;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Authorization;
 global using Microsoft.EntityFrameworkCore;
@@ -23,7 +20,7 @@ global using System.Text.Json.Serialization;
 global using System.Linq;
 global using Microsoft.AspNetCore.Http.HttpResults;
 global using Microsoft.AspNetCore.Authentication.JwtBearer;
-global using ecommerce.Dto;
+global using common.Dto;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -54,7 +51,7 @@ builder.Services.AddSwaggerGen(options =>
     // Definizione della sicurezza JWT per Swagger.
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
-        Description = "Inserisci il token JWT nel formato: Bearer {token}",
+        Description = "Formato token: Bearer {token}",
         Name = "Authorization",
         In = ParameterLocation.Header,
         Type = SecuritySchemeType.Http,
