@@ -1,34 +1,18 @@
-global using common.AuthJWT.Models;
-global using common.AuthJWT.Data;
-global using common.AuthJWT.Mappers;
-global using Microsoft.Extensions.Logging;
-global using common.AuthJWT.Services;
-global using Microsoft.AspNetCore.Mvc;
-global using Microsoft.AspNetCore.Authorization;
-global using Microsoft.EntityFrameworkCore;
-global using System.Collections.Generic;
-global using System.Threading.Tasks;
-global using System;
-global using System.IdentityModel.Tokens.Jwt;
-global using System.Security.Claims;
-global using System.Text;
-global using Microsoft.Extensions.Configuration;
-global using Microsoft.IdentityModel.Tokens;
-global using AutoMapper;
-global using Microsoft.OpenApi.Models;
-global using System.Text.Json.Serialization;
-global using System.Linq;
-global using Microsoft.AspNetCore.Http.HttpResults;
-global using Microsoft.AspNetCore.Authentication.JwtBearer;
-global using common.Dto;
+using common.AuthJWT.Data;
+using common.AuthJWT.Services;
+using Microsoft.EntityFrameworkCore;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Configurazione dei servizi nel container.
 
-// Registrazione del contesto DB con SQL Server (assicurati di avere la stringa di connessione "DefaultConnection" in appsettings.json)
-builder.Services.AddDbContext<EcomContext>(options =>
+// Registrazione del contesto DB con SQL Server
+builder.Services.AddDbContext<common.AuthJWT.Data.AuthContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Aggiunta dei controller.
@@ -46,7 +30,7 @@ builder.Services.AddEndpointsApiExplorer();
 // Configurazione di Swagger.
 builder.Services.AddSwaggerGen(options =>
 {
-    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Ecommerce API", Version = "v1" });
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Asi API", Version = "v1" });
 
     // Definizione della sicurezza JWT per Swagger.
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -101,10 +85,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
         options.TokenValidationParameters = new TokenValidationParameters
         {
-            ValidateIssuerSigningKey = true, // Valida la chiave di firma del token
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenKey)), // Chiave di firma
-            ValidateIssuer = false, // Non valida l'issuer del token
-            ValidateAudience = false // Non valida l'audience del token
+            ValidateIssuerSigningKey = true, 
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenKey)),
+            ValidateIssuer = false, 
+            ValidateAudience = false 
         };
     });
 

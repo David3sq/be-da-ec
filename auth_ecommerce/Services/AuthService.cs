@@ -1,10 +1,19 @@
-﻿namespace common.AuthJWT.Services
+﻿using ASI_Model.Models;
+using common.AuthJWT.Data;
+using common.Dto;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+
+namespace common.AuthJWT.Services
 {
     public class AuthService
     {
-		private readonly EcomContext _context;
+		private readonly AuthContext _context;
 		private readonly IConfiguration _configuration;
-		public AuthService(EcomContext context, IConfiguration configuration)
+		public AuthService(AuthContext context, IConfiguration configuration)
 		{
 			_context = context;
 			_configuration = configuration;
@@ -71,7 +80,7 @@
 			using (var hmac = new System.Security.Cryptography.HMACSHA512())
 			{
 				passwordSalt = hmac.Key;
-				passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+				passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
 			}
 		}
 		

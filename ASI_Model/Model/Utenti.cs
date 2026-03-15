@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace common.AuthJWT.Models
+namespace ASI_Model.Models
 {
     public class Utenti
     {

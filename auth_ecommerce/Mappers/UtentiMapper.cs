@@ -1,3 +1,5 @@
+using ASI_Model.Models;
+using AutoMapper;
 using common.AuthJWT.Dto;
 
 namespace common.AuthJWT.Mappers
