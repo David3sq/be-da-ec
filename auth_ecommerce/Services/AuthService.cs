@@ -1,4 +1,5 @@
 ﻿using ASI_Model.Models;
+using AuthJWT.Models;
 using common.AuthJWT.Data;
 using common.Dto;
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +23,8 @@ namespace common.AuthJWT.Services
 		public async Task<ServiceResponse<int>> Register (Utenti utenti, string password)
 		{
 			var response = new ServiceResponse<int>();
-			if(await UserExists(utenti.Username))
+			var role = new Ruoli();
+            if (await UserExists(utenti.Username))
 			{
 				response.Message = "Utente già registrato";
 				response.Success = false;
@@ -33,8 +35,9 @@ namespace common.AuthJWT.Services
 
             utenti.PasswordHash = passwordHash;
             utenti.PasswordSalt = passwordSalt;
+            utenti.Role = role.User;
 
-			_context.Utenti.Add(utenti);
+            _context.Utenti.Add(utenti);
 			await _context.SaveChangesAsync();
 			//imposta la variabile globale che indica l'identificativo dell utente ID
             
@@ -96,7 +99,8 @@ namespace common.AuthJWT.Services
 			{
 				new Claim(ClaimTypes.NameIdentifier, utenti.Id.ToString()),
 				new Claim(ClaimTypes.Name, utenti.Username),
-				new Claim(ClaimTypes.Role,utenti.Role)
+				new Claim(ClaimTypes.Role, utenti.Role),
+				new Claim("IsEnabled", utenti.IsEnabled)
             };
 
 			SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:Token").Value));

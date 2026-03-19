@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Security.Claims;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,24 +16,18 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<common.AuthJWT.Data.AuthContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Aggiunta dei controller.
 builder.Services.AddControllers();
 
-// Registrazione dei servizi personalizzati
-builder.Services.AddScoped<AuthService>();
+builder.Services.AddSingleton<AuthService>();
 
-// Configurazione di AutoMapper (se usato)
 builder.Services.AddAutoMapper(typeof(Program));
 
-// Aggiunta degli endpoint per API Explorer (Swagger).
 builder.Services.AddEndpointsApiExplorer();
 
-// Configurazione di Swagger.
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo { Title = "Asi API", Version = "v1" });
 
-    // Definizione della sicurezza JWT per Swagger.
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description = "Formato token: Bearer {token}",
@@ -41,6 +36,7 @@ builder.Services.AddSwaggerGen(options =>
         Type = SecuritySchemeType.Http,
         Scheme = "bearer"
     });
+
     options.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
@@ -61,12 +57,10 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
-        // Evento per la gestione del token nella richiesta
         options.Events = new JwtBearerEvents
         {
             OnMessageReceived = context =>
             {
-                // Estrae il token dall'intestazione Authorization, rimuovendo "Bearer "
                 var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
                 if (!string.IsNullOrEmpty(token))
                 {
@@ -76,7 +70,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             }
         };
 
-        // Parametri di validazione del token JWT
         var tokenKey = builder.Configuration.GetSection("AppSettings:Token").Value;
         if (string.IsNullOrEmpty(tokenKey))
         {
@@ -91,6 +84,25 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = false 
         };
     });
+
+// Si occupa dell'autorizzazione basata sui ruoli e sull' abilitazione dell'utente.
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("Owner", policy =>
+        policy.RequireRole("Owner"));
+        
+    options.AddPolicy("Admin", policy =>
+        policy.RequireRole("Owner", "Admin"));
+
+    options.AddPolicy("Technician", policy =>
+        policy.RequireRole("Owner", "Admin", "Technician"));
+
+    options.AddPolicy("User", policy =>
+        policy.RequireRole("Owner", "Admin", "Technician", "User"));
+
+    options.AddPolicy("UserEnabled", policy =>
+        policy.RequireClaim("IsEnabled", "True"));
+});
 
 var app = builder.Build();
 
