@@ -39,7 +39,6 @@ namespace common.AuthJWT.Services
 
             _context.Utenti.Add(utenti);
 			await _context.SaveChangesAsync();
-			//imposta la variabile globale che indica l'identificativo dell utente ID
             
             response.Data = utenti.Id;
             response.Success = true;

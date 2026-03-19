@@ -18,7 +18,7 @@ builder.Services.AddDbContext<common.AuthJWT.Data.AuthContext>(options =>
 
 builder.Services.AddControllers();
 
-builder.Services.AddSingleton<AuthService>();
+builder.Services.AddScoped<AuthService>();
 
 builder.Services.AddAutoMapper(typeof(Program));
 
