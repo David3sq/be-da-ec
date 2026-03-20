@@ -4,6 +4,7 @@ using common.AuthJWT.Data;
 using common.Dto;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Diagnostics.Contracts;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -127,6 +128,34 @@ namespace common.AuthJWT.Services
 				return computedHash.SequenceEqual(passwordHash);
 			}
 		}
+
+        public async Task<ServiceResponse<string>> DeleteAccount(string username, string password)
+        {
+			var response = new ServiceResponse<string> 
+			{
+				Data = string.Empty,
+				Message = "Account not deleted", 
+				Success = false 
+			};
+
+            var userExistsResponse = await UserExists(username);
+
+			if (userExistsResponse)
+			{
+				var user = await _context.Utenti.FirstOrDefaultAsync(u => u.Username.ToLower() == username.ToLower());
+                if (user != null && VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+				{
+                    response.Data = string.Concat(user.Username, " ", user.Id);
+                    _context.Utenti.Remove(user);
+					await _context.SaveChangesAsync();
+					response.Success = true;
+					response.Message = $"Account {response.Data} deleted successfully.";
+				}
+			}
+
+			return response;
+        }
+
     }
 }
 
