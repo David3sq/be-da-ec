@@ -4,7 +4,6 @@ using common.AuthJWT.Data;
 using common.Dto;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using System.Diagnostics.Contracts;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -156,6 +155,31 @@ namespace common.AuthJWT.Services
 			return response;
         }
 
+        public async Task<ServiceResponse<string>> ChangePassword(Utenti utenti, string password)
+        {
+			var response = new ServiceResponse<string>
+			{
+				Message = "Password not changed",
+				Success = false
+            };
+			var userExistsResponse = await UserExists(utenti.Username);
+
+			if (userExistsResponse)
+			{
+                CreatePasswordHash(password, out byte[] passwordHash, out byte[] passwordSalt);
+
+                utenti.PasswordHash = passwordHash;
+                utenti.PasswordSalt = passwordSalt;
+
+                _context.Utenti.Add(utenti);
+                await _context.SaveChangesAsync();
+
+				response.Message = $"Password changed successfully.";
+				response.Success = true;
+            }
+
+			return response;
+        }
     }
 }
 
