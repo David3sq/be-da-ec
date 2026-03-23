@@ -128,6 +128,27 @@ namespace common.AuthJWT.Services
 			}
 		}
 
+		private async Task<ServiceResponse<Utenti?>> GetUserData(string username)
+		{
+			var response = new ServiceResponse<Utenti?>
+			{
+				Data = null,
+				Message = "User not found",
+				Success = false
+			};
+
+            var user = await _context.Utenti.FirstOrDefaultAsync(u => u.Username.ToLower() == username.ToLower());
+
+			if (user != null)
+			{
+				response.Data = user;
+				response.Message = "User found";
+				response.Success = true;
+            }
+
+            return response;
+        }
+
         public async Task<ServiceResponse<string>> DeleteAccount(string username, string password)
         {
 			var response = new ServiceResponse<string> 
@@ -155,23 +176,23 @@ namespace common.AuthJWT.Services
 			return response;
         }
 
-        public async Task<ServiceResponse<string>> ChangePassword(Utenti utenti, string password)
+        public async Task<ServiceResponse<string>> ChangePassword(string username, string password)
         {
 			var response = new ServiceResponse<string>
 			{
 				Message = "Password not changed",
 				Success = false
             };
-			var userExistsResponse = await UserExists(utenti.Username);
 
-			if (userExistsResponse)
+            var userResponse = await GetUserData(username);
+
+			if (userResponse.Data is not null)
 			{
                 CreatePasswordHash(password, out byte[] passwordHash, out byte[] passwordSalt);
 
-                utenti.PasswordHash = passwordHash;
-                utenti.PasswordSalt = passwordSalt;
+                userResponse.Data.PasswordHash = passwordHash;
+                userResponse.Data.PasswordSalt = passwordSalt;
 
-                _context.Utenti.Add(utenti);
                 await _context.SaveChangesAsync();
 
 				response.Message = $"Password changed successfully.";

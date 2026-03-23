@@ -63,7 +63,7 @@ namespace common.AuthJWT.Controllers
         [Authorize]
         public async Task<ActionResult<ServiceResponse<string>>> ChangePassword(UtentiDto utenti)
         {
-            var response = await auth.ChangePassword(new Utenti { Username = utenti.Username }, utenti.Password);
+            var response = await auth.ChangePassword(utenti.Username, utenti.Password);
             if (!response.Success)
             {
                 return BadRequest(response);
