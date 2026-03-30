@@ -1,8 +1,8 @@
-using AuthJWT.Dto;
+using Electro.AuthJWT.Dto;
 using AutoMapper;
 using Electro.Domain.Entities;
 
-namespace AuthJWT.Mappers
+namespace Electro.AuthJWT.Mappers
 {
     public class UtentiProfile : Profile
     {

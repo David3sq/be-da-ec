@@ -1,4 +1,4 @@
-﻿using AuthJWT.Data;
+﻿using Electro.AuthJWT.Data;
 using Electro.Domain.Entities;
 using Electro.Domain.Models;
 using Electro.Domain.Shared;
@@ -8,7 +8,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace AuthJWT.Services
+namespace Electro.AuthJWT.Services
 {
     public class AuthService
     {
