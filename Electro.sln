@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Electro.AuthJWT", "auth_eco
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Electro.Domain", "ASI_Model\Electro.Domain.csproj", "{4FE76529-9970-4423-9559-3952FA9CE58A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Electro.Infrastructure", "Electro.Infrastructure\Electro.Infrastructure.csproj", "{339480C3-5996-4A96-B798-2AB39CBC4FA3}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
