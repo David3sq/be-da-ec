@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Electro.AuthJWT", "Electro.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Electro.Domain", "Electro.Domain\Electro.Domain.csproj", "{4FE76529-9970-4423-9559-3952FA9CE58A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Electro.Infrastructure", "Electro.Infrastructure\Electro.Infrastructure.csproj", "{1903492A-D9AB-49EF-AA15-9C4BC1F0F65E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4FE76529-9970-4423-9559-3952FA9CE58A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FE76529-9970-4423-9559-3952FA9CE58A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FE76529-9970-4423-9559-3952FA9CE58A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1903492A-D9AB-49EF-AA15-9C4BC1F0F65E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1903492A-D9AB-49EF-AA15-9C4BC1F0F65E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1903492A-D9AB-49EF-AA15-9C4BC1F0F65E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1903492A-D9AB-49EF-AA15-9C4BC1F0F65E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
