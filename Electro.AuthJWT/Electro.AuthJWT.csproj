@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ASI_Model\Electro.Domain.csproj" />
+    <ProjectReference Include="..\Electro.Domain\Electro.Domain.csproj" />
   </ItemGroup>
 
 </Project>
