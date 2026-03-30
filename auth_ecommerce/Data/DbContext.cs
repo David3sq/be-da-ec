@@ -1,8 +1,8 @@
 ﻿
-using ASI_Model.Models;
+using Electro.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace common.AuthJWT.Data
+namespace AuthJWT.Data
 {
     public class AuthContext : DbContext
     {

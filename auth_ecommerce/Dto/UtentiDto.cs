@@ -1,4 +1,4 @@
-﻿namespace common.AuthJWT.Dto
+﻿namespace AuthJWT.Dto
 {
     public class UtentiDto
     {

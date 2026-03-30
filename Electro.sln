@@ -5,13 +5,9 @@ VisualStudioVersion = 18.4.11605.240
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Electro.AuthJWT", "auth_ecommerce\Electro.AuthJWT.csproj", "{BBB9F8A2-E92F-4C42-84A6-D0CE794110FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTO", "DTO\DTO.csproj", "{72944F74-8375-40E6-8428-4717EBF2D35F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Electro.Domain", "ASI_Model\Electro.Domain.csproj", "{4FE76529-9970-4423-9559-3952FA9CE58A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{E59802D9-A71B-4A95-A0E9-BF1483A81494}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASI_Model", "ASI_Model\ASI_Model.csproj", "{4FE76529-9970-4423-9559-3952FA9CE58A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Electro.Infrastructure", "Electro.Infrastructure\Electro.Infrastructure.csproj", "{7B7527F5-0E46-499E-B4A7-326C9AAB3728}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Electro.Infrastructure", "Electro.Infrastructure\Electro.Infrastructure.csproj", "{339480C3-5996-4A96-B798-2AB39CBC4FA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,24 +19,13 @@ Global
 		{BBB9F8A2-E92F-4C42-84A6-D0CE794110FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBB9F8A2-E92F-4C42-84A6-D0CE794110FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBB9F8A2-E92F-4C42-84A6-D0CE794110FD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{72944F74-8375-40E6-8428-4717EBF2D35F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{72944F74-8375-40E6-8428-4717EBF2D35F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{72944F74-8375-40E6-8428-4717EBF2D35F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{72944F74-8375-40E6-8428-4717EBF2D35F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4FE76529-9970-4423-9559-3952FA9CE58A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4FE76529-9970-4423-9559-3952FA9CE58A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FE76529-9970-4423-9559-3952FA9CE58A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FE76529-9970-4423-9559-3952FA9CE58A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7B7527F5-0E46-499E-B4A7-326C9AAB3728}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7B7527F5-0E46-499E-B4A7-326C9AAB3728}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7B7527F5-0E46-499E-B4A7-326C9AAB3728}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7B7527F5-0E46-499E-B4A7-326C9AAB3728}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{4FE76529-9970-4423-9559-3952FA9CE58A} = {E59802D9-A71B-4A95-A0E9-BF1483A81494}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {70B56AF3-E256-4069-B288-11319004E2BB}

@@ -1,8 +1,8 @@
-using ASI_Model.Models;
+using AuthJWT.Dto;
 using AutoMapper;
-using common.AuthJWT.Dto;
+using Electro.Domain.Entities;
 
-namespace common.AuthJWT.Mappers
+namespace AuthJWT.Mappers
 {
     public class UtentiProfile : Profile
     {

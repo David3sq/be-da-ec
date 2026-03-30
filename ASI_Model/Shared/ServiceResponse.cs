@@ -1,4 +1,4 @@
-﻿namespace common.Dto
+﻿namespace Electro.Domain.Shared
 {
     public class ServiceResponse<T>
     {

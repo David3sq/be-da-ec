@@ -1,14 +1,14 @@
-﻿using ASI_Model.Models;
-using AuthJWT.Models;
-using common.AuthJWT.Data;
-using common.Dto;
+﻿using AuthJWT.Data;
+using Electro.Domain.Entities;
+using Electro.Domain.Models;
+using Electro.Domain.Shared;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace common.AuthJWT.Services
+namespace AuthJWT.Services
 {
     public class AuthService
     {

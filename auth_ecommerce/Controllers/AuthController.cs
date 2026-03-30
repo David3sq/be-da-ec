@@ -1,11 +1,11 @@
-using ASI_Model.Models;
-using common.AuthJWT.Dto;
-using common.AuthJWT.Services;
-using common.Dto;
+using AuthJWT.Dto;
+using AuthJWT.Services;
+using Electro.Domain.Entities;
+using Electro.Domain.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace common.AuthJWT.Controllers
+namespace AuthJWT.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

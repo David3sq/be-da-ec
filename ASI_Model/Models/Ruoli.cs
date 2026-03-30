@@ -1,4 +1,4 @@
-﻿namespace AuthJWT.Models
+﻿namespace Electro.Domain.Models
 {
     public class Ruoli
     {
