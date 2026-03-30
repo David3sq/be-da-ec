@@ -1,9 +1,9 @@
-using Microsoft.EntityFrameworkCore;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Electro.AuthJWT.Services;
+using Electro.Infrastructure.Extensions;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,8 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Configurazione dei servizi nel container.
 
 // Registrazione del contesto DB con SQL Server
-builder.Services.AddDbContext<Electro.AuthJWT.Data.AuthContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddControllers();
 

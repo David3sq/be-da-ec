@@ -1,7 +1,7 @@
-﻿using Electro.AuthJWT.Data;
-using Electro.Domain.Entities;
+﻿using Electro.Domain.Entities;
 using Electro.Domain.Models;
 using Electro.Domain.Shared;
+using Electro.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -12,9 +12,9 @@ namespace Electro.AuthJWT.Services
 {
     public class AuthService
     {
-		private readonly AuthContext _context;
+		private readonly ElectroContext _context;
 		private readonly IConfiguration _configuration;
-		public AuthService(AuthContext context, IConfiguration configuration)
+		public AuthService(ElectroContext context, IConfiguration configuration)
 		{
 			_context = context;
 			_configuration = configuration;
