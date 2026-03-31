@@ -23,7 +23,7 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(options =>
 {
-    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Asi API", Version = "v1" });
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Electro API", Version = "v1" });
 
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
@@ -51,55 +51,10 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 // Configura l'autenticazione JWT
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.Events = new JwtBearerEvents
-        {
-            OnMessageReceived = context =>
-            {
-                var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
-                if (!string.IsNullOrEmpty(token))
-                {
-                    context.Token = token;
-                }
-                return Task.CompletedTask;
-            }
-        };
+builder.Services.JwtConfiguration(builder.Configuration);
 
-        var tokenKey = builder.Configuration.GetSection("AppSettings:Token").Value;
-        if (string.IsNullOrEmpty(tokenKey))
-        {
-            throw new InvalidOperationException("La chiave del token JWT non è configurata. Verifica il file appsettings.json.");
-        }
-
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuerSigningKey = true, 
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenKey)),
-            ValidateIssuer = false, 
-            ValidateAudience = false 
-        };
-    });
-
-// Si occupa dell'autorizzazione basata sui ruoli e sull' abilitazione dell'utente.
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("Owner", policy =>
-        policy.RequireRole("Owner"));
-        
-    options.AddPolicy("Admin", policy =>
-        policy.RequireRole("Owner", "Admin"));
-
-    options.AddPolicy("Technician", policy =>
-        policy.RequireRole("Owner", "Admin", "Technician"));
-
-    options.AddPolicy("User", policy =>
-        policy.RequireRole("Owner", "Admin", "Technician", "User"));
-
-    options.AddPolicy("UserEnabled", policy =>
-        policy.RequireClaim("IsEnabled", "True"));
-});
+// Iniezione delle policy di autorizzazione tramite le estensioni definite in InfrastructureExtensions
+builder.Services.AddPolicy(builder.Configuration);
 
 var app = builder.Build();
 
