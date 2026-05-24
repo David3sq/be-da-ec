@@ -1,10 +1,10 @@
-namespace Electro.Domain.Entities.Lookups
+namespace Electro.Domain.Enums
 {
-    public class StatoTicket
+    public enum StatoTicket
     {
-        public int Id { get; set; }
-        public string Nome { get; set; } = string.Empty;
-
-        public ICollection<Ticket> Tickets { get; set; } = [];
+        Pending = 0,
+        InEvasione = 1,
+        Completo = 2,
+        Annullato = 3
     }
 }

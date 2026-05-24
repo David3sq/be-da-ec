@@ -3,10 +3,19 @@ namespace Electro.Domain.Entities
     public class DatiPagamentoUtente
     {
         public int Id { get; set; }
-        public int UtenteId { get; set; }
-        public string? IBAN { get; set; }
-        public string? Banca { get; set; }
 
+        public int UtenteId { get; set; }
         public Utenti Utente { get; set; } = null!;
+
+        public string? RagioneSociale { get; set; }
+        public string? IndirizzoFatturazione { get; set; }
+        public string? CittaFatturazione { get; set; }
+        public string? CapFatturazione { get; set; }
+        public string? ProvinciaFatturazione { get; set; }
+        public string? CodiceFiscaleFatturazione { get; set; }
+        public string? PartitaIvaFatturazione { get; set; }
+        public string? Pec { get; set; }
+        public string? CodiceSdi { get; set; }
+        public string? Iban { get; set; }
     }
 }

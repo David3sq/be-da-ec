@@ -99,7 +99,7 @@ namespace Electro.AuthJWT.Services
 				new Claim(ClaimTypes.NameIdentifier, utenti.Id.ToString()),
 				new Claim(ClaimTypes.Name, utenti.Username),
 				new Claim(ClaimTypes.Role, utenti.Role),
-				new Claim("IsEnabled", utenti.IsEnabled)
+				new Claim("IsEnabled", utenti.IsEnabled.ToString())
             };
 
 			SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:Token").Value));

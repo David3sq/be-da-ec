@@ -1,9 +1,11 @@
-namespace Electro.Domain.Entities.Lookups
+namespace Electro.Domain.Entities
 {
-    public class Priorita
+    public class TicketAnagrafica
     {
         public int Id { get; set; }
         public string Nome { get; set; } = string.Empty;
+        public string? Descrizione { get; set; }
+        public bool IsAttivo { get; set; } = true;
 
         public ICollection<Ticket> Tickets { get; set; } = [];
     }
