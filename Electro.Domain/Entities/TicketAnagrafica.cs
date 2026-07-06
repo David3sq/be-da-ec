@@ -7,6 +7,6 @@ namespace Electro.Domain.Entities
         public string? Descrizione { get; set; }
         public bool IsAttivo { get; set; } = true;
 
-        public ICollection<Ticket> Tickets { get; set; } = [];
+        public ICollection<Ticket> Ticket { get; set; } = [];
     }
 }

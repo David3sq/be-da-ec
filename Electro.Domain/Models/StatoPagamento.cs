@@ -1,4 +1,4 @@
-namespace Electro.Domain.Enums
+namespace Electro.Domain.Models
 {
     public enum StatoPagamento
     {

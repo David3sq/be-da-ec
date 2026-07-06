@@ -23,7 +23,7 @@ namespace Electro.AuthJWT.Controllers
         public async Task<ActionResult<ServiceResponse<int>>> Register(UtentiDto utenti)
         {
             var response = await auth.Register(
-                new Utenti { Username = utenti.Username }, utenti.Password
+                new Utente { Username = utenti.Username }, utenti.Password
             );
             if (!response.Success)
             {

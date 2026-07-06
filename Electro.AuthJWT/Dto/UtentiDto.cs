@@ -1,4 +1,4 @@
-﻿namespace Electro.AuthJWT.Dto
+﻿ namespace Electro.AuthJWT.Dto
 {
     public class UtentiDto
     {

@@ -1,11 +1,12 @@
-namespace Electro.Domain.Entities
+ namespace Electro.Domain.Entities
 {
-    public class UtentiAnagrafica
+    public class AnagraficaUtente
     {
         public int Id { get; set; }
 
+        // FK 1:1 verso Utente
         public int UtenteId { get; set; }
-        public Utenti Utente { get; set; } = null!;
+        public Utente Utente { get; set; } = null!;
 
         public string Nome { get; set; } = string.Empty;
         public string Cognome { get; set; } = string.Empty;

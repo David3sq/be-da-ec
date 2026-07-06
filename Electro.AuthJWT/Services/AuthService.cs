@@ -20,10 +20,10 @@ namespace Electro.AuthJWT.Services
 			_configuration = configuration;
 		}
 
-		public async Task<ServiceResponse<int>> Register (Utenti utenti, string password)
+		public async Task<ServiceResponse<int>> Register (Utente utenti, string password)
 		{
 			var response = new ServiceResponse<int>();
-			var role = new Ruoli();
+			var role = new Ruolo();
             if (await UserExists(utenti.Username))
 			{
 				response.Message = "Utente già registrato";
@@ -87,7 +87,7 @@ namespace Electro.AuthJWT.Services
 		}
 		
 		// Metodo per creare il token JWT
-		private string CreateToken(Utenti utenti)
+		private string CreateToken(Utente utenti)
 		{
 			if (string.IsNullOrEmpty(_configuration.GetSection("AppSettings:Token").Value))
 			{
@@ -128,9 +128,9 @@ namespace Electro.AuthJWT.Services
 			}
 		}
 
-		private async Task<ServiceResponse<Utenti?>> GetUserData(string username)
+		private async Task<ServiceResponse<Utente?>> GetUserData(string username)
 		{
-			var response = new ServiceResponse<Utenti?>
+			var response = new ServiceResponse<Utente?>
 			{
 				Data = null,
 				Message = "User not found",

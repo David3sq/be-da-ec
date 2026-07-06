@@ -4,8 +4,9 @@ namespace Electro.Domain.Entities
     {
         public int Id { get; set; }
 
+        // FK 1:0..1 verso Utente
         public int UtenteId { get; set; }
-        public Utenti Utente { get; set; } = null!;
+        public Utente Utente { get; set; } = null!;
 
         public string? RagioneSociale { get; set; }
         public string? IndirizzoFatturazione { get; set; }

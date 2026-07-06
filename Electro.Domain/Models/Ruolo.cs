@@ -1,6 +1,6 @@
 ﻿namespace Electro.Domain.Models
 {
-    public class Ruoli
+    public class Ruolo
     {
         private enum Role
         {

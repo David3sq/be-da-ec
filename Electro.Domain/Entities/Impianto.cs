@@ -1,4 +1,4 @@
-using Electro.Domain.Enums;
+using Electro.Domain.Models;
 
 namespace Electro.Domain.Entities
 {
@@ -10,19 +10,20 @@ namespace Electro.Domain.Entities
         public string? IndirizzoInstallazione { get; set; }
         public DateTime DataInstallazione { get; set; }
 
-        /// <summary>
-        /// Stato cache derivato dalle operazioni. Default Bozza alla creazione,
-        /// triggerato ad Attivo dal service quando viene completata la prima operazione.
-        /// Dismesso si imposta manualmente.
-        /// </summary>
+        // Stato cache (Bozza/Attivo/Dismesso)
         public StatoImpianto Stato { get; set; } = StatoImpianto.Bozza;
 
+        // FK verso TipoImpianto (nome coerente con la classe)
         public int TipoImpiantoId { get; set; }
         public TipoImpianto TipoImpianto { get; set; } = null!;
 
+        // FK verso Utente proprietario.
+        // Qui il nome NON è "UtenteId" ma "ProprietarioId" perché esprime il ruolo:
+        // la navigation si chiama Proprietario ed è di tipo Utente.
         public int ProprietarioId { get; set; }
-        public Utenti Proprietario { get; set; } = null!;
+        public Utente Proprietario { get; set; } = null!;
 
-        public ICollection<Ticket> Tickets { get; set; } = [];
+        // 1:N — ticket relativi a questo impianto
+        public ICollection<Ticket> Ticket { get; set; } = [];
     }
 }

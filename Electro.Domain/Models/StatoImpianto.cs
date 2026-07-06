@@ -1,4 +1,4 @@
-namespace Electro.Domain.Enums
+namespace Electro.Domain.Models
 {
     /// <summary>
     /// Stato dell'impianto. È un campo cache derivato:

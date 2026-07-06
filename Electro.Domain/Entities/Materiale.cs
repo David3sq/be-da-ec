@@ -10,6 +10,7 @@ namespace Electro.Domain.Entities
         public string UnitaMisura { get; set; } = "pz";
         public bool IsAttivo { get; set; } = true;
 
-        public ICollection<MaterialeUtilizzato> Utilizzi { get; set; } = [];
+        // 1:N — utilizzi di questo materiale nelle operazioni
+        public ICollection<MaterialeUtilizzato> MaterialiUtilizzati { get; set; } = [];
     }
 }
