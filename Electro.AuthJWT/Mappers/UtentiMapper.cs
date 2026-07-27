@@ -11,9 +11,7 @@ namespace Electro.AuthJWT.Mappers
             // Mappa da Utenti a UtentiDto
             CreateMap<Utente, UtentiDto>()
                 .ForMember(dest => dest.Password, opt => opt.Ignore())
-                .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.Username))
-                .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role))
-                .ForMember(dest => dest.IsEnabled, opt => opt.MapFrom(src => src.IsEnabled));
+                .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.Username));
 
             // Mappa da UtentiDto a Utenti
             CreateMap<UtentiDto, Utente>()
