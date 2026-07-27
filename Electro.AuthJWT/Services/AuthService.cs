@@ -23,7 +23,6 @@ namespace Electro.AuthJWT.Services
 		public async Task<ServiceResponse<int>> Register (Utente utenti, string password)
 		{
 			var response = new ServiceResponse<int>();
-			var role = new Ruolo();
             if (await UserExists(utenti.Username))
 			{
 				response.Message = "Utente già registrato";
@@ -35,7 +34,7 @@ namespace Electro.AuthJWT.Services
 
             utenti.PasswordHash = passwordHash;
             utenti.PasswordSalt = passwordSalt;
-            utenti.Role = role.User;
+            utenti.Role = Ruolo.User;
 
             _context.Utenti.Add(utenti);
 			await _context.SaveChangesAsync();
