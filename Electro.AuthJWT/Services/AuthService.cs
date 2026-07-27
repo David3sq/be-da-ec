@@ -201,6 +201,52 @@ namespace Electro.AuthJWT.Services
 
 			return response;
         }
+
+        public async Task<ServiceResponse<bool>> EnableUser(string username)
+        {
+            var response = new ServiceResponse<bool>
+            {
+                Data = false,
+                Message = "User not found",
+                Success = false
+            };
+
+            var user = await _context.Utenti.FirstOrDefaultAsync(u => u.Username.ToLower() == username.ToLower());
+
+            if (user != null)
+            {
+                user.IsEnabled = true;
+                await _context.SaveChangesAsync();
+                response.Data = true;
+                response.Message = "User enabled successfully.";
+                response.Success = true;
+            }
+
+            return response;
+        }
+
+        internal async Task<ServiceResponse<bool>> DisableUser(string username)
+        {
+            var response = new ServiceResponse<bool>
+            {
+                Data = false,
+                Message = "User not found",
+                Success = false
+            };
+
+            var user = await _context.Utenti.FirstOrDefaultAsync(u => u.Username.ToLower() == username.ToLower());
+
+            if (user != null)
+            {
+                user.IsEnabled = false;
+                await _context.SaveChangesAsync();
+                response.Data = true;
+                response.Message = "User disabled successfully.";
+                response.Success = true;
+            }
+
+            return response;
+        }
     }
 }
 

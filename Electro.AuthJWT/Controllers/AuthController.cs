@@ -70,5 +70,31 @@ namespace Electro.AuthJWT.Controllers
             }
             return Ok(response);
         }
+
+        [HttpPost("Enable User")]
+        [EndpointDescription("Enable User")]
+        [Authorize(Roles = "Owner")]
+        public async Task<ActionResult<ServiceResponse<bool>>> EnableUser(UtentiDto utenti)
+        {
+            var response = await auth.EnableUser(utenti.Username);
+            if (!response.Success)
+            {
+                return BadRequest(response);
+            }
+            return Ok(response);
+        }
+
+        [HttpPost("Disable User")]
+        [EndpointDescription("Disable User")]
+        [Authorize(Roles = "Owner")]
+        public async Task<ActionResult<ServiceResponse<bool>>> DisableUser(UtentiDto utenti)
+        {
+            var response = await auth.DisableUser(utenti.Username);
+            if (!response.Success)
+            {
+                return BadRequest(response);
+            }
+            return Ok(response);
+        }
     }
 }
