@@ -23,6 +23,27 @@ namespace Electro.Infrastructure.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            // ---- Precisione dei decimal, allineata alle colonne reali su ASI_Global ----
+            // Senza HasPrecision EF assume decimal(18,2): i prezzi a 4 decimali e le
+            // quantita' a 3 verrebbero arrotondati in silenzio in scrittura.
+            modelBuilder.Entity<Materiale>()
+                        .Property(m => m.PrezzoUnitario).HasPrecision(18, 4);
+
+            modelBuilder.Entity<MaterialeUtilizzato>()
+                        .Property(mu => mu.PrezzoUnitarioStorico).HasPrecision(18, 4);
+
+            modelBuilder.Entity<MaterialeUtilizzato>()
+                        .Property(mu => mu.Quantita).HasPrecision(18, 3);
+
+            modelBuilder.Entity<Operazione>()
+                        .Property(o => o.CostoManodopera).HasPrecision(18, 2);
+
+            modelBuilder.Entity<Ticket>()
+                        .Property(t => t.ImportoTotale).HasPrecision(18, 2);
+
+            modelBuilder.Entity<Ticket>()
+                        .Property(t => t.ImportoPagato).HasPrecision(18, 2);
+
             // ---- Chiave composta per la tabella di join (obbligatoria) ----
             modelBuilder.Entity<TicketOperatore>()
                         .HasKey(to => new { to.TicketId, to.UtenteId });

@@ -1,0 +1,6 @@
+@Electro.Core_HostAddress = http://localhost:5269
+
+GET {{Electro.Core_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

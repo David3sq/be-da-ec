@@ -1,9 +1,6 @@
-using System.Text;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Electro.AuthJWT.Services;
+using Electro.Core.Services;
 using Electro.Infrastructure.Extensions;
+using Microsoft.OpenApi.Models;
 
 // Nome della policy CORS usata solo in sviluppo.
 const string DevCorsPolicy = "ElectroDevCors";
@@ -12,16 +9,18 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Configurazione dei servizi nel container.
 
-// Registrazione del contesto DB con SQL Server
+// Registrazione del contesto DB (ElectroContext) con SQL Server.
+// La connection string arriva da ConnectionStrings:DefaultConnection.
 builder.Services.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddControllers();
 
-builder.Services.AddScoped<AuthService>();
+// Servizi applicativi di Electro.Core
+builder.Services.AddScoped<InfoUserServices>();
 
-builder.Services.AddAutoMapper(typeof(Program));
-
-// CORS: serve solo al client Flutter Web. E' solo a scopo di testing in sviluppo, non va usato in produzione.
+// CORS: serve solo al client Flutter Web. Su desktop e su emulatore Android
+// non c'e' un browser di mezzo, quindi non c'e' nessuna preflight da superare.
+// In produzione elencare le origini note con .WithOrigins(...).
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(DevCorsPolicy, policy => policy
@@ -34,7 +33,7 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(options =>
 {
-    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Electro API", Version = "v1" });
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Electro Core API", Version = "v1" });
 
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
@@ -61,10 +60,12 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-// Configura l'autenticazione JWT
+// Validazione del token JWT emesso da Electro.AuthJWT.
+// La chiave (AppSettings:Token) deve essere identica a quella di Electro.AuthJWT,
+// altrimenti la firma non viene riconosciuta e ogni richiesta torna 401.
 builder.Services.JwtConfiguration(builder.Configuration);
 
-// Iniezione delle policy di autorizzazione tramite le estensioni definite in InfrastructureExtensions
+// Iniezione delle policy di autorizzazione definite in InfrastructureExtensions.
 builder.Services.AddPolicy(builder.Configuration);
 
 var app = builder.Build();
