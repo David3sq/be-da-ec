@@ -1,0 +1,16 @@
+<Project Sdk="Aspire.AppHost.Sdk/13.2.4">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UserSecretsId>04e6329c-3743-4e9a-8268-3391ba57ded5</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Electro.AuthJWT\Electro.AuthJWT.csproj" />
+    <ProjectReference Include="..\..\Electro.Core\Electro.Core.csproj" />
+  </ItemGroup>
+
+</Project>
