@@ -1,4 +1,5 @@
 using Electro.Domain.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Electro.Domain.Entities
 {
@@ -25,5 +26,8 @@ namespace Electro.Domain.Entities
 
         // 1:N — ticket relativi a questo impianto
         public ICollection<Ticket> Ticket { get; set; } = [];
+
+        [Timestamp]
+        public byte[] RowVersion { get; set; } = [];
     }
 }

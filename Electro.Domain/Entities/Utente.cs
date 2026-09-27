@@ -1,4 +1,5 @@
 using Electro.Domain.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Electro.Domain.Entities
 {
@@ -25,5 +26,8 @@ namespace Electro.Domain.Entities
 
         // M:N — ticket su cui l'utente è assegnato come operatore (via TicketOperatore)
         public ICollection<TicketOperatore> TicketAssegnati { get; set; } = [];
+
+        [Timestamp]
+        public byte[] RowVersion { get; set; } = [];
     }
 }

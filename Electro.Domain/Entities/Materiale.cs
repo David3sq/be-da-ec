@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Electro.Domain.Entities
 {
     public class Materiale
@@ -12,5 +14,8 @@ namespace Electro.Domain.Entities
 
         // 1:N — utilizzi di questo materiale nelle operazioni
         public ICollection<MaterialeUtilizzato> MaterialiUtilizzati { get; set; } = [];
+
+        [Timestamp]
+        public byte[] RowVersion { get; set; } = [];
     }
 }

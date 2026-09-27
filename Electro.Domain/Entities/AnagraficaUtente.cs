@@ -1,4 +1,6 @@
- namespace Electro.Domain.Entities
+using System.ComponentModel.DataAnnotations;
+
+namespace Electro.Domain.Entities
 {
     public class AnagraficaUtente
     {
@@ -21,5 +23,8 @@
 
         public DateTime DataCreazione { get; set; } = DateTime.UtcNow;
         public DateTime? DataUltimaModifica { get; set; }
+
+        [Timestamp]
+        public byte[] RowVersion { get; set; } = [];
     }
 }

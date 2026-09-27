@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Electro.Domain.Entities
 {
     public class DatiPagamentoUtente
@@ -18,5 +20,8 @@ namespace Electro.Domain.Entities
         public string? Pec { get; set; }
         public string? CodiceSdi { get; set; }
         public string? Iban { get; set; }
+
+        [Timestamp]
+        public byte[] RowVersion { get; set; } = [];
     }
 }
