@@ -4,6 +4,7 @@ using Electro.Domain.Entities;
 using Electro.Domain.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Electro.AuthJWT.Controllers
 {
@@ -61,9 +62,14 @@ namespace Electro.AuthJWT.Controllers
         [HttpPost("Change Password")]
         [EndpointDescription("Change Password")]
         [Authorize]
-        public async Task<ActionResult<ServiceResponse<string>>> ChangePassword(UtentiDto utenti)
+        public async Task<ActionResult<ServiceResponse<string>>> ChangePassword(CambioPasswordDto dto)
         {
-            var response = await auth.ChangePassword(utenti.Username, utenti.Password);
+            if (!int.TryParse(User.FindFirstValue(ClaimTypes.NameIdentifier), out var utenteId))
+            {
+                return Unauthorized();
+            }
+
+            var response = await auth.ChangePassword(utenteId, dto.PasswordAttuale, dto.NuovaPassword);
             if (!response.Success)
             {
                 return BadRequest(response);

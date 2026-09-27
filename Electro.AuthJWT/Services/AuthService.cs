@@ -127,27 +127,6 @@ namespace Electro.AuthJWT.Services
 			}
 		}
 
-		private async Task<ServiceResponse<Utente?>> GetUserData(string username)
-		{
-			var response = new ServiceResponse<Utente?>
-			{
-				Data = null,
-				Message = "User not found",
-				Success = false
-			};
-
-            var user = await _context.Utenti.FirstOrDefaultAsync(u => u.Username.ToLower() == username.ToLower());
-
-			if (user != null)
-			{
-				response.Data = user;
-				response.Message = "User found";
-				response.Success = true;
-            }
-
-            return response;
-        }
-
         public async Task<ServiceResponse<string>> DeleteAccount(string username, string password)
         {
 			var response = new ServiceResponse<string> 
@@ -175,30 +154,40 @@ namespace Electro.AuthJWT.Services
 			return response;
         }
 
-        public async Task<ServiceResponse<string>> ChangePassword(string username, string password)
+        // In questo caso l'utente lo prendiamo dal token (claim NameIdentifier)
+        public async Task<ServiceResponse<string>> ChangePassword(int utenteId, string passwordAttuale, string nuovaPassword)
         {
-			var response = new ServiceResponse<string>
-			{
-				Message = "Password not changed",
-				Success = false
+            var response = new ServiceResponse<string>
+            {
+                Message = "Password not changed",
+                Success = false
             };
 
-            var userResponse = await GetUserData(username);
-
-			if (userResponse.Data is not null)
-			{
-                CreatePasswordHash(password, out byte[] passwordHash, out byte[] passwordSalt);
-
-                userResponse.Data.PasswordHash = passwordHash;
-                userResponse.Data.PasswordSalt = passwordSalt;
-
-                await _context.SaveChangesAsync();
-
-				response.Message = $"Password changed successfully.";
-				response.Success = true;
+            if (string.IsNullOrWhiteSpace(nuovaPassword))
+            {
+                response.Message = "New password cannot be empty";
+                return response;
             }
 
-			return response;
+            var user = await _context.Utenti.FirstOrDefaultAsync(u => u.Id == utenteId);
+
+            if (user is null || !VerifyPasswordHash(passwordAttuale, user.PasswordHash, user.PasswordSalt))
+            {
+                response.Message = "Wrong password";
+                return response;
+            }
+
+            CreatePasswordHash(nuovaPassword, out byte[] passwordHash, out byte[] passwordSalt);
+
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
+
+            await _context.SaveChangesAsync();
+
+            response.Message = "Password changed successfully.";
+            response.Success = true;
+
+            return response;
         }
 
         public async Task<ServiceResponse<bool>> EnableUser(string username)
