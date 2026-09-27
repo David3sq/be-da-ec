@@ -10,6 +10,7 @@ namespace Electro.AuthJWT.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Policy = "UserEnabled")]
     public class AuthController : ControllerBase
     {
         private readonly AuthService auth;
@@ -21,6 +22,7 @@ namespace Electro.AuthJWT.Controllers
 
         [HttpPost("register")]
         [EndpointDescription("User Register")]
+        [AllowAnonymous]
         public async Task<ActionResult<ServiceResponse<int>>> Register(UtentiDto utenti)
         {
             var response = await auth.Register(
@@ -36,6 +38,7 @@ namespace Electro.AuthJWT.Controllers
 
         [HttpPost("login")]
         [EndpointDescription("User Login")]
+        [AllowAnonymous]
         public async Task<ActionResult<ServiceResponse<string>>> Login(UtentiDto utenti)
         {
             var response = await auth.Login(utenti.Username, utenti.Password);
@@ -61,7 +64,6 @@ namespace Electro.AuthJWT.Controllers
 
         [HttpPost("Change Password")]
         [EndpointDescription("Change Password")]
-        [Authorize]
         public async Task<ActionResult<ServiceResponse<string>>> ChangePassword(CambioPasswordDto dto)
         {
             if (!int.TryParse(User.FindFirstValue(ClaimTypes.NameIdentifier), out var utenteId))

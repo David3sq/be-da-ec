@@ -9,7 +9,7 @@ namespace Electro.Core.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    [Authorize(Policy = "UserEnabled")]
     public class GetInfoUser : ControllerBase
     {
         private readonly InfoUserServices info;
